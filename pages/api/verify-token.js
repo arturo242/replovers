@@ -1,5 +1,5 @@
 // pages/api/verify-token.js
-import { verifyToken } from '../../../lib/auth';
+import { verifyToken } from '../../lib/auth';
 
 export default function handler(req, res) {
   const token = req.headers.authorization?.split(' ')[1];
