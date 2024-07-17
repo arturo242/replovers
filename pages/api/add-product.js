@@ -3,13 +3,12 @@ import db from '../../lib/db';
 
 export default async function handler(req, res) {
   if (req.method === 'POST') {
-    const { link, title, price, photo, photo2 } = req.body;
+    const { link, title, price, photo } = req.body;
     const photoBuffer = photo ? Buffer.from(photo, 'base64') : null;
-    const photo2Buffer = photo2 ? Buffer.from(photo2, 'base64') : null;
     try {
       const result = await db.query(
-        'INSERT INTO rh_products (link, title, price, photo, photo2) VALUES (?, ?, ?, ?, ?)',
-        [link, title, price, photoBuffer, photo2Buffer]
+        'INSERT INTO rh_products (link, title, price, photo) VALUES (?, ?, ?, ?)',
+        [link, title, price, photoBuffer]
       );
       res.status(200).json({ message: 'Product added successfully' });
     } catch (error) {

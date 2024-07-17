@@ -1,6 +1,6 @@
-// pages/index.js
 'use client'
 import { useEffect, useState } from 'react';
+import Nav from './nav';
 
 export default function Home() {
   const [products, setProducts] = useState([]);
@@ -16,14 +16,8 @@ export default function Home() {
   }, []);
 
   return (
-    <div className='w-100 mx-auto'>
-      <h1>Productos</h1>
-      <ul className='flex'>
-        {products && products.map(product => (
-          <li key={product.id}>{product.title}
-          </li>
-        ))}
-      </ul>
+    <div className='w-4/6 mx-auto p-6'>
+        <Nav />
     </div>
   );
 }

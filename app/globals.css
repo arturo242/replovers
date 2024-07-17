@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --background: #252525;
+  --background: #1b1c18;
 }
 
 body {
@@ -19,4 +19,29 @@ input{
   .text-balance {
     text-wrap: balance;
   }
+}
+
+.productos{
+  @apply grid gap-5 p-5 mt-10 justify-items-center; 
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+
+.producto{
+  @apply bg-gray-800 p-5 rounded-lg shadow-md;
+  
+}
+
+.producto img{
+  @apply w-32 h-32 object-cover p-0;
+}
+
+.nav li.active{
+  color: #fe8080;
+  font-weight: bold;
+  scale: 1.2;
+}
+
+.nav li:hover, a[href]:hover{
+  color: #fe8080;
+  text-decoration: none;
 }

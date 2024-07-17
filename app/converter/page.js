@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react';
+import Nav from '../nav';
 
 export default function LinkShortener() {
     const [longUrl, setLongUrl] = useState('');
@@ -10,19 +11,7 @@ export default function LinkShortener() {
     const [id, setId] = useState('');
     const [shopType, setShopType] = useState('');
     const [error, setError] = useState('');
-    const [users, setUsers] = useState([]);
-
-    useEffect(() => {
-        async function fetchUsers() {
-          const response = await fetch('/api/users');
-          const data = await response.json();
-          setUsers(data);
-        }
-        
-        fetchUsers();
-    }, []);
     
-    console.log(users)
     useEffect(() => {
         if (domain && id) {
             handleRawUrl(shopType, id);
@@ -153,8 +142,9 @@ export default function LinkShortener() {
     };
 
     return (
-        <>
-            <h1 className="text-2xl font-semibold">Convertidor</h1>
+        <div className='w-4/6 mx-auto p-6'>
+            <Nav site="converter"/>
+            <h1 className="text-2xl font-semibold">Conversor</h1>
             <div className="w-full p-3 flex justify-center">
                 <input
                     className="border border-gray-300 rounded-lg p-2 w-80"
@@ -188,6 +178,6 @@ export default function LinkShortener() {
                     ))}
                 </div>
             )}
-        </>
+        </div>
     );
 }

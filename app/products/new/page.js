@@ -7,16 +7,12 @@ function ProductForm() {
   const [title, setTitle] = useState('');
   const [price, setPrice] = useState('');
   const [photo, setPhoto] = useState(null);
-  const [photo2, setPhoto2] = useState(null);
   const [message, setMessage] = useState('');
 
   const handlePhotoChange = (e) => {
     setPhoto(e.target.files[0]);
   };
 
-  const handlePhoto2Change = (e) => {
-    setPhoto2(e.target.files[0]);
-  };
 
   const getBase64 = (file) => {
     return new Promise((resolve, reject) => {
@@ -30,13 +26,11 @@ function ProductForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const base64Photo = photo ? await getBase64(photo) : null;
-    const base64Photo2 = photo2 ? await getBase64(photo2) : null;
     const product = {
       link: link,
       title: title,
       price: price,
       photo: base64Photo ? base64Photo.split(',')[1] : null,
-      photo2: base64Photo2 ? base64Photo2.split(',')[1] : null,
     };
     try {
       const response = await fetch('/api/add-product', {
@@ -55,7 +49,6 @@ function ProductForm() {
         setTitle('');
         setPrice('');
         setPhoto(null);
-        setPhoto2(null);
       } else {
         setMessage(data.message);
       }
@@ -101,14 +94,6 @@ return (
         <input
           type="file"
           onChange={handlePhotoChange}
-
-        />
-      </div>
-      <div>
-        <label>Foto secundaria</label>
-        <input
-          type="file"
-          onChange={handlePhoto2Change}
 
         />
       </div>
