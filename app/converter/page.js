@@ -5,12 +5,13 @@ import Nav from '../nav';
 
 export default function LinkShortener() {
     const [longUrl, setLongUrl] = useState('');
-    const [rawUrl, setRawUrl] = useState('');
+    const [rawUrl, setRawUrl] = useState(null);
     const [agentUrls, setAgentUrls] = useState([]);
     const [domain, setDomain] = useState('');
     const [id, setId] = useState('');
     const [shopType, setShopType] = useState('');
     const [error, setError] = useState('');
+    const [loading, setLoading] = useState(false);
     
     useEffect(() => {
         if (domain && id) {
@@ -25,7 +26,8 @@ export default function LinkShortener() {
             setError('URL inválida');
             return;
         }
-
+        
+        setLoading(true)
         setError('');
         setDomain(domain);
 
@@ -70,6 +72,7 @@ export default function LinkShortener() {
             default:
                 break;
         }
+        setLoading(false);
     };
 
     const handleRawUrl = (shopType, id) => {
@@ -144,35 +147,38 @@ export default function LinkShortener() {
     return (
         <div className=''>
             <Nav site="converter"/>
-            <h1 className="text-2xl font-semibold">Conversor</h1>
-            <div className="w-full p-3 flex justify-center">
-                <input
-                    className="border border-gray-300 rounded-lg p-2 w-80"
-                    type="text"
-                    value={longUrl}
-                    onChange={(e) => setLongUrl(e.target.value)}
-                />
-                <button
-                    className="border border-gray-300 rounded-lg p-2 ml-2"
-                    onClick={handleShorten}>Convert</button>
+            <h1 className="title text-center">Conversor</h1>
+            <p className="text-center mt-10">aqui va el texto</p>
+            <div className="w-3/6 p-3 flex justify-center mx-auto mt-10 gap-4">
+                    <input
+                        className="border border-gray-300 rounded-lg p-2 w-full"
+                        type="text"
+                        value={longUrl}
+                        onChange={(e) => setLongUrl(e.target.value)}
+                    />
+                    <button
+                        className="boton shadowHover w-2/6"
+                        onClick={handleShorten}>Convertir</button>
             </div>
-
-            {error && (
-                <div className="mt-3 text-red-600">{error}</div>
-            )}
+                {error && (
+                    <div className="mt-2 text-red-400 text-center">{error}</div>
+                )}
+            {
+                loading && <div className='loading mt-20'></div>
+            }
 
             {rawUrl && (
-                <div>
-                    <h2 className={`mb-3 text-2xl font-semibold`}>Raw Link</h2>
-                    <a target='blank' href={rawUrl}>{rawUrl}</a>
+                <div className='mx-auto w-5/6 mt-10'>
+                    <h2 className='text-secondary'>Enlace bruto</h2>
+                    <a className='mt-3' target='blank' href={rawUrl}>{rawUrl}</a>
                 </div>
             )}
 
             {agentUrls.length > 0 && (
-                <div>
-                    <h2 className={`mb-3 text-2xl font-semibold`}>Agent Links</h2>
+                <div className='mx-auto w-5/6 mt-10'>
+                    <h2 className='text-secondary'>Enlaces de los intermediarios</h2>
                     {agentUrls.map((url, index) => (
-                        <div className="" key={index}>
+                        <div className="mt-3" key={index}>
                             <a target='blank' href={url}>{url}</a>
                         </div>
                     ))}

@@ -6,10 +6,12 @@ const Nav = ({site}) => {
   const router = useRouter();
   return (
     <nav className="flex justify-between items-center nav">
-      <Image src='/logo_blanco.png'
-          alt='logo'
-          width={250}
-          height={250} />
+      <Link href="/">
+        <Image src='/logo_blanco.png'
+            alt='logo'
+            width={250}
+            height={250} />
+      </Link>
       <ul className='flex gap-5'>
         <li className={site == "products" ? "active" : ""}>
           <Link href="/products">

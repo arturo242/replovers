@@ -135,7 +135,7 @@ function ProductForm() {
           </label>
         </div>
         {message && <p className={messageClass}>{message}</p>}
-        <button type="submit" className='bg-secondary p-2 rounded-md'>Añadir producto</button>
+        <button type="submit" className='bg-secondary p-2 rounded-md text-black'>Añadir producto</button>
       </form>
     </div>
   );
