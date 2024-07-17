@@ -142,7 +142,7 @@ export default function LinkShortener() {
     };
 
     return (
-        <div className='w-4/6 mx-auto p-6'>
+        <div className='w-4/6 mx-auto p-6 '>
             <Nav site="converter"/>
             <h1 className="text-2xl font-semibold">Conversor</h1>
             <div className="w-full p-3 flex justify-center">
