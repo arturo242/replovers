@@ -17,22 +17,24 @@ export default function Products() {
   }, []);
 
   return (
-    <div className='w-4/6 mx-auto p-6'>
+    <div className=''>
       <Nav site="products"/>
       <div className="productos">
         {products && products.map((product) => (
-          <div key={product.id} className='producto'>
-            <a href={`products/${product.id}`} >
-              <Image 
-                src={`data:image/jpeg;base64,${Buffer.from(product.photo).toString('base64')}`} 
+          <div key={product.id} className='producto shadowHover'>
+            <div >
+              
+              <Image className='max-h-[220px]'
+                src={product.photo ? `data:image/jpeg;base64,${Buffer.from(product.photo).toString('base64')}` : '/logo_blanco.png'}
                 alt={product.title}
-                width={200}
-                height={200}
+                width={348}
+                height={348}
                 />
-              <h2>{product.title}</h2>
-              <p>Price: ${product.price}</p>
-            </a>
-            <a href={`${product.link}&ref=507768`} target='blank'>Link</a>
+                <h2 className='font-bold mt-2 productTitle'>{product.title}</h2>
+              <p>{product.price}€</p>
+            </div>
+            <div>
+              <a className='boton' href={`${product.link}&ref=507768`} target='blank'>COMPRAR EN CNFANS</a></div>
           </div>
         ))}
       </div>

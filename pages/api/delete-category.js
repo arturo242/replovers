@@ -3,14 +3,13 @@ import db from '../../lib/db';
 
 export default async function handler(req, res) {
   if (req.method === 'POST') {
-    const { link, title, price, photo, categoryId } = req.body;
-    const photoBuffer = photo ? Buffer.from(photo, 'base64') : null;
+    const { id } = req.body;
     try {
       const result = await db.query(
-        'INSERT INTO rh_products (link, title, price, photo, categoryId) VALUES (?, ?, ?, ?, ?)',
-        [link, title, price, photoBuffer, categoryId]
+        'DELETE FROM rh_categories WHERE id = ?',
+        [id]
       );
-      res.status(200).json({ message: 'Se ha añadido el producto' });
+      res.status(200).json({ message: 'Se ha eliminado la categoría' });
     } catch (error) {
       res.status(500).json({ error: error.message });
     }

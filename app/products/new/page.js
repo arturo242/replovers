@@ -1,12 +1,15 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import Nav from '@/app/nav';
 
 function ProductForm() {
   const [link, setLink] = useState('');
   const [title, setTitle] = useState('');
   const [price, setPrice] = useState('');
   const [photo, setPhoto] = useState(null);
+  const [categories, setCategories] = useState('');
+  const [messageClass, setMessageClass] = useState('')
   const [message, setMessage] = useState('');
 
   const handlePhotoChange = (e) => {
@@ -22,6 +25,21 @@ function ProductForm() {
       reader.onerror = (error) => reject(error);
     });
   };
+
+  //Fetch categories
+  const fetchCategories = async () => {
+    try {
+      const response = await fetch('/api/categories');
+      const data = await response.json();
+      setCategories(data);
+    } catch (error) {
+      console.error('Error fetching categories:', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchCategories();
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -44,7 +62,7 @@ function ProductForm() {
       const data = await response.json();
 
       if (response.ok) {
-        setMessage('Product added successfully');
+        setMessage('Se ha añadido el producto correctamente');
         setLink('');
         setTitle('');
         setPrice('');
@@ -53,55 +71,74 @@ function ProductForm() {
         setMessage(data.message);
       }
     } catch (error) {
-      setMessage('Something went wrong');
+      setMessage('Ha ocurrido un error');
     }
   };
 
-return (
-  <div>
-    <h1>Add New Product</h1>
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label>Link</label>
-        <input
-          type="text"
-          value={link}
-          onChange={(e) => setLink(e.target.value)}
-          required
-        />
-      </div>
-      <div>
-        <label>Título</label>
-        <input
-          type="text"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
+  return (
+    <div>
+      <Nav />
+      <form onSubmit={handleSubmit} className='w-96 flex flex-col gap-5 mx-auto'>
+        <h1>Añadir producto</h1>
+        <div>
+          <label className='flex flex-col'>Link
+            <input
+              className='p-2 rounded-md'
+              type="text"
+              value={link}
+              onChange={(e) => setLink(e.target.value)}
+              required
+            />
+          </label>
+        </div>
+        <div>
+          <label className='flex flex-col'>Título
+            <input
+              className='p-2 rounded-md'
+              type="text"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
 
-        />
-      </div>
-      <div>
-        <label>Precio</label>
-        <input
-          type="number"
-          step="0.01"
-          value={price}
-          onChange={(e) => setPrice(e.target.value)}
+            />
+          </label>
+        </div>
+        <div>
+          <label className='flex flex-col'>Precio
+            <input
+              className='p-2 rounded-md'
+              type="number"
+              step="0.01"
+              value={price}
+              onChange={(e) => setPrice(e.target.value)}
 
-        />
-      </div>
-      <div>
-        <label>Foto principal</label>
-        <input
-          type="file"
-          onChange={handlePhotoChange}
+            />
+          </label>
+        </div>
+        <div>
+          <label className='flex flex-col'>Categoría
+            <select className='p-2 rounded-md text-black'>
+              <option>Selecciona</option>
+              {categories && categories.map(({id, category}) => (
+                <option key={id} value={id}>{category}</option>
+              ))}
+            </select>
+          </label>
+        </div>
+        <div>
+          <label className='flex flex-col'>Foto principal
+            <input
+              className='p-2 rounded-md text-white'
+              type="file"
+              onChange={handlePhotoChange}
 
-        />
-      </div>
-      {message && <p>{message}</p>}
-      <button type="submit">Add Product</button>
-    </form>
-  </div>
-);
+            />
+          </label>
+        </div>
+        {message && <p className={messageClass}>{message}</p>}
+        <button type="submit" className='bg-secondary p-2 rounded-md'>Añadir producto</button>
+      </form>
+    </div>
+  );
 
 }
 

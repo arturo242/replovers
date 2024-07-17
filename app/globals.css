@@ -4,13 +4,33 @@
 
 :root {
   --background: #1b1c18;
+  --secondary: #fe8080;
 }
 
 body {
   color: #fff;
   background: var(--background);
+  @apply mx-auto p-6;
 }
 
+@media screen and (min-width: 1921px) {
+  body {
+    @apply w-4/6;
+  }
+  
+}
+
+h1{
+  @apply text-3xl font-bold;
+}
+
+h2{
+  @apply text-2xl font-bold;
+}
+
+h3{
+  @apply text-xl font-bold;
+}
 input{
   color: var(--background);
 }
@@ -22,26 +42,46 @@ input{
 }
 
 .productos{
-  @apply grid gap-5 p-5 mt-10 justify-items-center; 
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  @apply grid gap-5 p-5 mt-10 justify-items-center justify-center; 
+  grid-template-columns: repeat(auto-fill, 348px);
 }
 
 .producto{
-  @apply bg-gray-800 p-5 rounded-lg shadow-md;
-  
+  @apply p-5 rounded-lg shadow-md flex flex-col justify-between gap-4;
+  background-color: #3c3c3c;
+  box-shadow: 0 0 3px #ffffff;
+  transition: all 0.2s;
+}
+
+.shadowHover:hover{
+  box-shadow: 0 0 15px var(--secondary);
 }
 
 .producto img{
-  @apply w-32 h-32 object-cover p-0;
+  @apply object-cover p-0;
 }
 
 .nav li.active{
-  color: #fe8080;
+  color: var(--secondary);
   font-weight: bold;
   scale: 1.2;
 }
 
-.nav li:hover, a[href]:hover{
-  color: #fe8080;
+.nav li:hover{
+  color: var(--secondary);
   text-decoration: none;
+}
+
+.boton{
+  @apply inline-block text-white p-3 rounded-md w-full text-center font-bold;
+  background-color: var(--secondary);
+  color: #1b1c18;
+}
+
+.productTitle{
+  color: var(--secondary);
+}
+
+.bg-secondary{
+  background-color: var(--secondary);
 }
