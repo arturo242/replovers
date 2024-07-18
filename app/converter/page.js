@@ -149,7 +149,7 @@ export default function LinkShortener() {
             <Nav site="converter"/>
             <h1 className="title text-center">Conversor</h1>
             <p className="text-center mt-10">aqui va el texto</p>
-            <div className="w-3/6 p-3 flex justify-center mx-auto mt-10 gap-4">
+            <div className="w-5/6 md:w-4/6 p-3 md:flex justify-center mx-auto mt-10 gap-4">
                     <input
                         className="border border-gray-300 rounded-lg p-2 w-full"
                         type="text"
@@ -157,7 +157,7 @@ export default function LinkShortener() {
                         onChange={(e) => setLongUrl(e.target.value)}
                     />
                     <button
-                        className="boton shadowHover w-2/6"
+                        className="boton shadowHover w-full md:w-2/6 mt-4 md:mt-0"
                         onClick={handleShorten}>Convertir</button>
             </div>
                 {error && (
