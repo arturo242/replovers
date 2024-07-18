@@ -53,6 +53,10 @@ input{
   transition: all 0.2s;
 }
 
+.secondaryHover:hover{
+  color: var(--secondary);
+}
+
 .shadowHover:hover{
   box-shadow: 0 0 15px var(--secondary);
 }

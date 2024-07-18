@@ -7,7 +7,7 @@ export default async function handler(req, res) {
     const photoBuffer = photo ? Buffer.from(photo, 'base64') : null;
     try {
       const result = await db.query(
-        'INSERT INTO rh_products (link, title, price, photo, categoryId) VALUES (?, ?, ?, ?, ?)',
+        'INSERT INTO rh_products (link, title, price, photo, category_id) VALUES (?, ?, ?, ?, ?)',
         [link, title, price, photoBuffer, categoryId]
       );
       res.status(200).json({ message: 'Se ha añadido el producto' });

@@ -170,7 +170,7 @@ export default function LinkShortener() {
             {rawUrl && (
                 <div className='mx-auto w-5/6 mt-10'>
                     <h2 className='text-secondary'>Enlace bruto</h2>
-                    <a className='mt-3' target='blank' href={rawUrl}>{rawUrl}</a>
+                    <a className='mt-3 secondaryHover' target='blank' href={rawUrl}>{rawUrl}</a>
                 </div>
             )}
 
@@ -179,7 +179,7 @@ export default function LinkShortener() {
                     <h2 className='text-secondary'>Enlaces de los intermediarios</h2>
                     {agentUrls.map((url, index) => (
                         <div className="mt-3" key={index}>
-                            <a target='blank' href={url}>{url}</a>
+                            <a target='blank' className='secondaryHover' href={url}>{url}</a>
                         </div>
                     ))}
                 </div>

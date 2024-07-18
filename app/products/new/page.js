@@ -8,6 +8,7 @@ function ProductForm() {
   const [title, setTitle] = useState('');
   const [price, setPrice] = useState('');
   const [photo, setPhoto] = useState(null);
+  const [categoryId, setCategoryId] = useState('');
   const [categories, setCategories] = useState('');
   const [messageClass, setMessageClass] = useState('')
   const [message, setMessage] = useState('');
@@ -49,6 +50,7 @@ function ProductForm() {
       title: title,
       price: price,
       photo: base64Photo ? base64Photo.split(',')[1] : null,
+      categoryId: categoryId,
     };
     try {
       const response = await fetch('/api/add-product', {
@@ -67,11 +69,15 @@ function ProductForm() {
         setTitle('');
         setPrice('');
         setPhoto(null);
+        setCategoryId('');
+        setMessageClass('text-green-500');
       } else {
         setMessage(data.message);
+        setMessageClass('text-red-500');
       }
     } catch (error) {
       setMessage('Ha ocurrido un error');
+      setMessageClass('text-red-500');
     }
   };
 
@@ -116,7 +122,8 @@ function ProductForm() {
         </div>
         <div>
           <label className='flex flex-col'>Categoría
-            <select className='p-2 rounded-md text-black'>
+            <select className='p-2 rounded-md text-black'
+            onChange={(e) => setCategoryId(e.target.value)} >
               <option>Selecciona</option>
               {categories && categories.map(({id, category}) => (
                 <option key={id} value={id}>{category}</option>
