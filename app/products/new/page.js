@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Nav from '@/app/nav';
+import EditProducts from '../editProducts';
 
 function ProductForm() {
   const [link, setLink] = useState('');
@@ -144,6 +145,8 @@ function ProductForm() {
         {message && <p className={messageClass}>{message}</p>}
         <button type="submit" className='bg-secondary p-2 rounded-md text-black'>Añadir producto</button>
       </form>
+
+      <EditProducts/>
     </div>
   );
 
