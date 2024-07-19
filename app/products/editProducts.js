@@ -71,6 +71,7 @@ export default function EditProducts() {
       title: form.querySelector('input[name="title"]').value,
       link: form.querySelector('input[name="link"]').value,
       price: form.querySelector('input[name="price"]').value,
+      num_products: form.querySelector('input[name="num_products"]').value,
       category_id: form.querySelector('select[name="category_id"]').value,
     }
     const response = await fetch(`/api/edit-product`, {
@@ -105,7 +106,7 @@ export default function EditProducts() {
           ))
         }
       </div>
-      <div className="w-3/6 mx-auto">
+      <div className="w-6/6">
         {products ? products.map((product) => (
           <form key={product.id} id={`product${product.id}`} className='flex gap-2 mt-3 justify-between items-center' onSubmit={handleChangeForm(product.id)}>
             <Image className='max-h-[220px]'
@@ -136,6 +137,7 @@ export default function EditProducts() {
               value={product.price}
               onChange={(e) => setProducts(products.map(p => p.id === product.id ? { ...p, price: e.target.value } : p))}
             />
+            
             <select className='p-2 rounded-md text-black'
              name="category_id"
              value={product.category_id ?? 'Selecciona'}
@@ -152,6 +154,14 @@ export default function EditProducts() {
                 </option>
               ))}
             </select>
+            <input
+              className='p-2 rounded-md'
+              type="number"
+              name="num_products"
+              min={0}
+              value={product.num_products}
+              onChange={(e) => setProducts(products.map(p => p.id === product.id ? { ...p, num_products: e.target.value } : p))}
+            />
             <button className='rounded-md border p-3' type="submit" target='blank'>Editar</button>
             <button className='boton' type="button" onClick={handleDelete(product.id)} target='blank'>Borrar</button>
           </form>

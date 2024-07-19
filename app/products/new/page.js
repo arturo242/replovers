@@ -9,6 +9,7 @@ function ProductForm() {
   const [title, setTitle] = useState('');
   const [price, setPrice] = useState('');
   const [photo, setPhoto] = useState(null);
+  const [num_products, setNumProducts] = useState(null);
   const [categoryId, setCategoryId] = useState('');
   const [categories, setCategories] = useState('');
   const [messageClass, setMessageClass] = useState('')
@@ -51,6 +52,7 @@ function ProductForm() {
       title: title,
       price: price,
       photo: base64Photo ? base64Photo.split(',')[1] : null,
+      num_products: num_products,
       categoryId: categoryId,
     };
     try {
@@ -71,6 +73,7 @@ function ProductForm() {
         setPrice('');
         setPhoto(null);
         setCategoryId('');
+        setNumProducts(null);
         setMessageClass('text-green-500');
       } else {
         setMessage(data.message);
@@ -130,6 +133,18 @@ function ProductForm() {
                 <option key={id} value={id}>{category}</option>
               ))}
             </select>
+          </label>
+        </div>
+        <div>
+          <label className='flex flex-col'>Número de productos
+            <input
+              className='p-2 rounded-md'
+              type="number"
+              min={0}
+              value={num_products}
+              onChange={(e) => setNumProducts(e.target.value)}
+
+            />
           </label>
         </div>
         <div>

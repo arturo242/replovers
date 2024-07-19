@@ -71,7 +71,12 @@ export default function Products({ searchParams }) {
       </div>
       <div className="productos">
         {products ? products.map((product) => (
-          <div key={product.id} className='producto shadowHover'>
+          <div key={product.id} className='producto shadowHover relative'>
+            <span className='absolute top-2 right-3 bg-secondary rounded-[100px]'>+
+              {
+                product.num_products
+              }
+            </span>
             <div>
               <Image className='max-h-[220px]'
                 src={product.photo ? `data:image/jpeg;base64,${Buffer.from(product.photo).toString('base64')}` : '/logo_blanco.png'}
