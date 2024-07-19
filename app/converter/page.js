@@ -148,7 +148,7 @@ export default function LinkShortener() {
         <div className=''>
             <Nav site="converter"/>
             <h1 className="title text-center">Conversor</h1>
-            <p className="text-center mt-10">aqui va el texto</p>
+            <p className="mt-10 w-3/6 mx-auto">Este conversor se utiliza para transformar enlaces de productos entre distintos agentes. Convierte productos desde Taobao, 1688 y Weidian a los agentes de compra: CNFans, AllChinaBuy, Hoobuy, CssBuy & Sugargoo.</p>
             <div className="w-5/6 md:w-4/6 p-3 md:flex justify-center mx-auto mt-10 gap-4">
                     <input
                         className="border border-gray-300 rounded-lg p-2 w-full"
@@ -176,7 +176,7 @@ export default function LinkShortener() {
 
             {agentUrls.length > 0 && (
                 <div className='mx-auto w-5/6 mt-10'>
-                    <h2 className='text-secondary'>Enlaces de los intermediarios</h2>
+                    <h2 className='text-secondary'>Enlaces de los agentes</h2>
                     {agentUrls.map((url, index) => (
                         <div className="mt-3" key={index}>
                             <a target='blank' className='secondaryHover' href={url}>{url}</a>

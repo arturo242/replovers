@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 const Nav = ({site}) => {
   const router = useRouter();
   return (
-    <nav className="flex justify-between items-center nav">
+    <nav className="flex justify-between items-center nav pr-20">
       <Link href="/">
         <Image src='/logo_blanco.png'
             alt='logo'

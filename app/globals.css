@@ -94,13 +94,8 @@ input{
   background-color: var(--secondary);
 }
 
-.loading{
-  @apply fixed top-0 left-0 w-full h-full flex items-center justify-center;
+.loadingProducts img{
   animation: heartbeat 1s infinite;
-  background-image: url('/logo_blanco_rojo.png');
-  background-size: 300px;
-  background-repeat: no-repeat;
-  background-position: 50%;
 }
 
 @keyframes heartbeat {
@@ -116,4 +111,13 @@ input{
   75% {
       transform: scale(1.1);
   }
+}
+
+/* Categorias */
+
+.category.active{
+  background-color: var(--secondary);
+  color: var(--background);
+  border: 0;
+  font-weight: bold;
 }
