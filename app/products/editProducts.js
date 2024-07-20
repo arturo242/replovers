@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import Nav from '../nav';
 import Image from 'next/image';
 
 export default function EditProducts() {

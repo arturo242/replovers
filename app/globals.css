@@ -7,10 +7,10 @@
   --secondary: #fe8080;
 }
 
-body, html {
+body {
+  position: relative;
   color: #fff;
   background: var(--background);
-  @apply mx-auto p-6;
 }
 
 @media screen and (min-width: 1921px) {
@@ -60,6 +60,9 @@ input{
 .shadowHover:hover{
   box-shadow: 0 0 15px var(--secondary);
 }
+.shadowHoverWhite:hover{
+  box-shadow: 0 0 15px white;
+}
 
 .producto img{
   @apply object-cover p-0;
@@ -82,6 +85,11 @@ input{
   color: #1b1c18;
 }
 
+.botonSecundario{
+  @apply inline-block text-white p-3 rounded-md text-center font-bold;
+  background-color: #3c3c3c;
+}
+
 .productTitle{
   color: var(--secondary);
 }
@@ -90,8 +98,15 @@ input{
   color: var(--secondary);
 }
 
+.bg-primary{
+  background-color: var(--background);
+}
 .bg-secondary{
   background-color: var(--secondary);
+}
+
+.border-secondary{
+  border-color: var(--secondary);
 }
 
 .loadingProducts img{

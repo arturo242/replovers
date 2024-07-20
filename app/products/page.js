@@ -15,6 +15,11 @@ export default function Products({ searchParams }) {
     const data = await res.json();
     setProducts(data);
   };
+  const fetchProductsSearch = async (title, cat_id = null) => {
+    const res = cat_id ? await fetch(`/api/products-search?category_id=${cat_id}&title=${title}`) : await fetch(`/api/products-search?title=${title}`);
+    const data = await res.json();
+    setProducts(data);
+  };
   const fetchCategories = async () => {
     const res = await fetch('/api/categories');
     const data = await res.json();
@@ -48,6 +53,14 @@ export default function Products({ searchParams }) {
     fetchProducts(id);
   }
 
+  const handleSearch = async (e) => {
+    e.preventDefault();
+    const title = e.target.value;
+    if (title) fetchProductsSearch(title, categoryId);
+    else fetchProducts(categoryId ? categoryId : null);
+    
+  }
+
   const changeUrl = (category) => {
     if (category === 'Todos') {
       window.history.pushState({}, '', '/products');
@@ -61,6 +74,16 @@ export default function Products({ searchParams }) {
     <div className=''>
       <Nav site="products" />
       <h1 className='title text-center'>Productos</h1>
+      <div className='w-full flex justify-center mt-10'>
+        <input
+          type="text"
+          className="search bg-primary p-3 rounded-[100px] border text-white text-center"
+          placeholder="Buscar"
+          onChange={handleSearch}
+          readOnly={true}
+        />
+      </div>
+      
       <div className='mt-10 flex gap-5 mx-auto justify-center'>
         <button id="category-0" className={`rounded-[100px] border p-3 category ${categoryId ? '' : 'active'}`} onClick={handleFilterCategory(null, "Todos")}>Todos</button>
         {
@@ -72,11 +95,12 @@ export default function Products({ searchParams }) {
       <div className="productos">
         {products ? products.map((product) => (
           <div key={product.id} className='producto shadowHover relative'>
-            <span className='absolute top-2 right-3 bg-secondary rounded-[100px]'>+
+            {product.num_products != 0 && (
+            <span className='absolute top-3 right-3 bg-secondary rounded-[100px] p-2'>+
               {
                 product.num_products
               }
-            </span>
+            </span>)}
             <div>
               <Image className='max-h-[220px]'
                 src={product.photo ? `data:image/jpeg;base64,${Buffer.from(product.photo).toString('base64')}` : '/logo_blanco.png'}
