@@ -10,8 +10,8 @@ const Nav = ({site}) => {
       <Link href="/">
         <Image src='/logo_blanco.png'
             alt='logo'
-            width={250}
-            height={250} />
+            width={130}
+            height={130} />
       </Link>
       <ul className='flex gap-5 items-center'>
         <li className={site == "products" ? "active" : ""}>
