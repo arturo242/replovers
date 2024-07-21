@@ -18,8 +18,11 @@ export default function RootLayout({ children }) {
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
         <link rel="manifest" href="/favicon/site.webmanifest" />
       </head>
-      <body className={inter.className}><div id="app">{children}</div>
-        <Footer />
+      <body className={inter.className}>
+        <div id="app">
+          {children}
+        </div>
+          <Footer />
       </body>
     </html>
   );

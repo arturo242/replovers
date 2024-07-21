@@ -17,29 +17,21 @@ body {
   background-image: url('/corazon_blanco.png');
   background-size: 60px;
   background-blend-mode: overlay;
-  padding-bottom: 250px;
   display: flex;
-  min-height: 100vh;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
+  min-height: 100vh;
 }
 
 footer{
-  @apply p-5 text-center w-[100%];
+  @apply p-5 text-center w-full;
   background-color: rgba(60, 60, 60, 0.5);
   min-height: 250px;
 }
 
 #app{
-  @apply p-2 mx-auto;
+  @apply w-full p-2 mx-auto;
   flex: 1;
-}
-
-@media screen and (min-width: 1921px) {
-  #app {
-    @apply w-4/6;
-  }
-  
 }
 
 h1{

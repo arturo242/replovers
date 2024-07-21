@@ -7,7 +7,7 @@ const Footer = () => {
         <footer className='opacity-[0.8] mt-10'>
             © RepLovers. 2024
             <div className='my-5 flex gap-5 justify-center items-center'>
-                <a href='https://www.instagram.com/andalufinds/' target='blank' className='text-white'>
+                <a href='https://www.instagram.com/andalufinds/' target='blank' className='text-white hover:text-shadow'>
                     <Image src='/instagram.svg' alt='instagram' width={30} height={30} />
                 </a>
                 <a href='https://www.reddit.com/r/replovers/' target='blank' className='text-white'>

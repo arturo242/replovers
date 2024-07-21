@@ -6,7 +6,7 @@ export default function Tutorial() {
     return (
         <>
             <Nav site="tutorial" />
-            <div className='flex flex-col gap-5 items-center w-3/6 mx-auto'>
+            <div className='flex flex-col gap-5 items-center w-5/6 md:w-3/6 mx-auto'>
                 <h1 className='title text-center'>Tutorial</h1>
                 <h2 className='text-secondary mt-5'>¿Qué es CNFans?</h2>
                 <p>
@@ -33,11 +33,11 @@ export default function Tutorial() {
                     Para buscar productos puedes buscarlos en nuestra página web, Telegram o en alguna de
                     nuestras Spreadsheet.
                 </p>
-                <div className='flex gap-5'>
+                <div className='flex gap-5 flex-col md:flex-row md:items-center'>
                     <a className='boton shadowHover' href="/products">Productos</a>
                     <a className='boton shadowHover' href="https://docs.google.com/spreadsheets/d/1QxgInjnAmNm2lm30G0qNZttNipC1OWPQ0crbUDkZk1A/edit?gid=0#gid=0" target='blank'>Outfits Spreadsheet</a>
                     <a className='boton shadowHover' href="https://www.youtube.com/redirect?event=video_description&redir_token=QUFFLUhqbjQ4allpam5ma2lybjVwYllUOFdqOF9HRUo1UXxBQ3Jtc0ttUzJsVTRzV1pJOElFMi1zVGs5b2x2OXBGaTd5RjlxaGJ6ZHJ5c3ZPbnY4ajk1T0VmZlNzQW81bGdIY19IS0U2a21ZQ1dpYnJKWlBUWE94emRzMGVTUVVZVUtoTVdWM1J6NThyUk1xdFc2a2FsTEVOWQ&q=https%3A%2F%2Fdocs.google.com%2Fspreadsheets%2Fd%2F1d8d3BLMxaUomRufs6aWnssNY5RWEXPl5kbUO-8Be-5Y%2Fedit%3Fusp%3Dsharing&v=p1fNMuhKXH4" target='blank'>
-                    Spreadsheet (+3000 productos)
+                    Spreadsheet (+3000)
                     </a>
                     <a className='botonSecundario shadowHoverWhite' href="https://t.me/+Lnp-Bi7rJzw1MGZk" target='blank'>Telegram</a>
                 </div>

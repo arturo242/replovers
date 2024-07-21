@@ -83,7 +83,7 @@ export default function Products({ searchParams }) {
         />
       </div>
       
-      <div className='mt-10 flex gap-5 mx-auto justify-center'>
+      <div className='mt-10 flex gap-5 mx-auto md:justify-center justify-start overflow-x-auto '>
         <button id="category-0" className={`rounded-[100px] border p-3 category ${categoryId ? '' : 'active'}`} onClick={handleFilterCategory(null, "Todos")}>Todos</button>
         {
           categories && categories.map(({ id, category }) => (
