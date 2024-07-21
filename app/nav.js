@@ -30,7 +30,7 @@ const Nav = ({site}) => {
           </Link>
         </li>
         <li>
-          <a className='inline-block text-white px-4 py-2 rounded-md text-center font-bold bg-[#3c3c3c] shadowHoverWhite' href="https://t.me/andalupanda" target='blank'>Telegram</a>
+          <a className='inline-block text-white px-4 py-2 rounded-md text-center font-bold bg-[#3c3c3c] shadowHoverWhite' href="https://t.me/+Lnp-Bi7rJzw1MGZk" target='blank'>Telegram</a>
         </li>
       </ul>
     </nav>

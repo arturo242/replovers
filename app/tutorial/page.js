@@ -39,7 +39,7 @@ export default function Tutorial() {
                     <a className='boton shadowHover' href="https://www.youtube.com/redirect?event=video_description&redir_token=QUFFLUhqbjQ4allpam5ma2lybjVwYllUOFdqOF9HRUo1UXxBQ3Jtc0ttUzJsVTRzV1pJOElFMi1zVGs5b2x2OXBGaTd5RjlxaGJ6ZHJ5c3ZPbnY4ajk1T0VmZlNzQW81bGdIY19IS0U2a21ZQ1dpYnJKWlBUWE94emRzMGVTUVVZVUtoTVdWM1J6NThyUk1xdFc2a2FsTEVOWQ&q=https%3A%2F%2Fdocs.google.com%2Fspreadsheets%2Fd%2F1d8d3BLMxaUomRufs6aWnssNY5RWEXPl5kbUO-8Be-5Y%2Fedit%3Fusp%3Dsharing&v=p1fNMuhKXH4" target='blank'>
                     Spreadsheet (+3000 productos)
                     </a>
-                    <a className='botonSecundario shadowHoverWhite' href="https://t.me/andalupanda" target='blank'>Telegram</a>
+                    <a className='botonSecundario shadowHoverWhite' href="https://t.me/+Lnp-Bi7rJzw1MGZk" target='blank'>Telegram</a>
                 </div>
                 <p>
                     Una vez que hayas encontrado los productos, debes añadirlos a la cesta. Para ello debes

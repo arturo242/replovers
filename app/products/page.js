@@ -80,7 +80,6 @@ export default function Products({ searchParams }) {
           className="search bg-primary p-3 rounded-[100px] border text-white text-center"
           placeholder="Buscar"
           onChange={handleSearch}
-          readOnly={true}
         />
       </div>
       

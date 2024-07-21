@@ -11,6 +11,10 @@ body {
   position: relative;
   color: #fff;
   background: var(--background);
+  background-image: url('/corazon_blanco.png');
+  background-size: 60px;
+  background-blend-mode: overlay;
+  @apply p-2 mx-auto;
 }
 
 @media screen and (min-width: 1921px) {
@@ -47,10 +51,19 @@ input{
 }
 
 .producto{
-  @apply p-5 rounded-lg shadow-md flex flex-col justify-between gap-4;
+  @apply p-5 rounded-lg flex flex-col justify-between gap-4;
   background-color: #3c3c3c;
   box-shadow: 0 0 3px #ffffff;
   transition: all 0.2s;
+}
+.provider{
+  @apply rounded-lg flex flex-col justify-between items-center gap-4;
+  background-color: #3c3c3c;
+  box-shadow: 0 0 3px #ffffff;
+  transition: all 0.2s;
+}
+.provider img{
+  @apply rounded-t-lg;
 }
 
 .secondaryHover:hover{
@@ -109,7 +122,7 @@ input{
   border-color: var(--secondary);
 }
 
-.loadingProducts img{
+.loadingProducts > img{
   animation: heartbeat 1s infinite;
 }
 
