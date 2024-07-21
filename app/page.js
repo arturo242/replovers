@@ -1,6 +1,7 @@
 'use client'
 import { useEffect, useState } from 'react';
 import Nav from './nav';
+import Footer from './footer';
 import Image from 'next/image';
 
 export default function Home() {
@@ -17,7 +18,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className=''>
+    <>
       <Nav />
       <div className='mt-20 flex flex-col justify-center items-center'>
         <Image
@@ -29,6 +30,9 @@ export default function Home() {
         />
         <div className='flex gap-5'>
           <a href="/products?categoria=Destacados" className='boton shadowHover text-xl bold'>Productos destacados</a>
+          <a target='blank' href="https://docs.google.com/spreadsheets/d/1d8d3BLMxaUomRufs6aWnssNY5RWEXPl5kbUO-8Be-5Y/edit?usp=sharing" className='boton shadowHover text-xl bold'>
+            Spreadsheet (+3000)
+          </a>
           <a target='blank' href="https://t.me/+Lnp-Bi7rJzw1MGZk" className='botonSecundario shadowHoverWhite text-xl bold'>Únete al telegram</a>
         </div>
         
@@ -51,11 +55,7 @@ export default function Home() {
             <span className='p-2 text-lg bold'>Cowboy Shop</span>
           </a>
         </div>
-
-
-        {/* featured items */}
-        {/* boton ir a items destacados */}
       </div>
-    </div>
+    </>
   );
 }
