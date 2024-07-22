@@ -37,7 +37,7 @@ export default function Home() {
         </div>
         
         <h2 className='mt-20'>MEJORES PROVEEDORES</h2>
-        <div className='providers mt-10 flex flex-col md:flex-row gap-5'>
+        <div className='mt-10 flex flex-col md:flex-row gap-5'>
           <a href='https://cnfans.com/es/shops/?shop_type=weidian&shop_id=1650315740&num=1' target='blank' className='provider shadowHover'>
             <Image src="/providers/cowboy.jpg" alt="cowboy shop" width={200} height={200} />	
             <span className='p-2 text-lg bold'>Cowboy Shop</span>
