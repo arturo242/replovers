@@ -28,7 +28,7 @@ export default function Home() {
           width={600}
           height={600}
         />
-        <div className='flex gap-5'>
+        <div className='flex flex-col md:flex-row gap-5'>
           <a href="/products?categoria=Destacados" className='boton shadowHover text-xl bold'>Productos destacados</a>
           <a target='blank' href="https://docs.google.com/spreadsheets/d/1d8d3BLMxaUomRufs6aWnssNY5RWEXPl5kbUO-8Be-5Y/edit?usp=sharing" className='boton shadowHover text-xl bold'>
             Spreadsheet (+3000)
@@ -37,7 +37,7 @@ export default function Home() {
         </div>
         
         <h2 className='mt-20'>MEJORES PROVEEDORES</h2>
-        <div className='providers mt-10 flex gap-5'>
+        <div className='providers mt-10 flex flex-col md:flex-row gap-5'>
           <a href='https://cnfans.com/es/shops/?shop_type=weidian&shop_id=1650315740&num=1' target='blank' className='provider shadowHover'>
             <Image src="/providers/cowboy.jpg" alt="cowboy shop" width={200} height={200} />	
             <span className='p-2 text-lg bold'>Cowboy Shop</span>

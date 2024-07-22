@@ -54,7 +54,7 @@ input{
     text-wrap: balance;
   }
 }
-.productos{
+.productos, .providers{
   @apply grid gap-5 p-5 mt-10 justify-items-center justify-center; 
   grid-template-columns: repeat(auto-fill, 348px);
 }
@@ -84,10 +84,6 @@ input{
 }
 .shadowHoverWhite:hover{
   box-shadow: 0 0 15px white;
-}
-
-.producto img{
-  @apply object-cover p-0;
 }
 
 .nav li.active{
