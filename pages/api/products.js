@@ -4,7 +4,6 @@ import db from '../../lib/db';
 export default async function handler(req, res) {
   if (req.method === 'GET') {
     const { category_id } = req.query;
-    console.log(category_id)
     try {
       if(category_id){
         const [rows] = await db.query('SELECT * FROM rh_products WHERE category_id = ?', [category_id]);

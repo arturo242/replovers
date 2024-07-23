@@ -35,7 +35,7 @@ footer{
 }
 
 h1{
-  @apply text-5xl font-bold;
+  @apply text-5xl font-bold mt-3;
 }
 
 h2{
@@ -45,6 +45,11 @@ h2{
 h3{
   @apply text-xl font-bold;
 }
+
+ol{
+  list-style: numbers;
+}
+
 input{
   color: var(--background);
 }
@@ -86,16 +91,22 @@ input{
   box-shadow: 0 0 15px white;
 }
 
-.nav li.active{
-  color: var(--secondary);
-  font-weight: bold;
-  scale: 1.2;
+.nav{
+  min-height: 100px;
 }
 
-.nav li:hover{
-  color: var(--secondary);
-  text-decoration: none;
+.nav li{
+  @apply p-3 rounded-md shadowHoverWhite text-xl text-center w-full;
+  background-color: rgba(60, 60, 60, 0.5);
+  backdrop-filter: blur(5px);
+  
 }
+
+.nav li.active{
+  @apply boton shadowHover;
+  font-weight: bold;
+}
+
 
 .boton{
   @apply inline-block text-white p-3 rounded-md text-center font-bold;
@@ -153,4 +164,15 @@ input{
   color: var(--background);
   border: 0;
   font-weight: bold;
+}
+
+/* FAQ */
+
+
+#faq article{
+  @apply rounded-lg w-3/6;
+  background-color: #3c3c3c;
+  box-shadow: 0 0 3px #ffffff;
+  transition: all 0.2s;
+  overflow: hidden;
 }

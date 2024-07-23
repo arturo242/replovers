@@ -41,8 +41,13 @@ const Nav = ({site}) => {
               Tutorial
             </Link>
           </li>
-          <li>
-            <a className='inline-block text-white px-4 py-2 rounded-md text-center font-bold bg-[#3c3c3c] shadowHoverWhite' href="https://t.me/+Lnp-Bi7rJzw1MGZk" target='blank'>Telegram</a>
+          <li >
+            <Link href="/#faq">
+              FAQ
+            </Link>
+          </li>
+          <li className='inline-block text-white px-4 py-2 rounded-md text-center font-bold bg-[#3c3c3c] shadowHoverWhite'>
+            <a href="https://t.me/+Lnp-Bi7rJzw1MGZk" target='blank'>Telegram</a>
           </li>
         </ul>
       </nav>
@@ -60,7 +65,7 @@ const Nav = ({site}) => {
             <div className={`w-[30px] h-1 rounded-md bg-white transform origin-bottom-left transition-transform ${isOpen ? '-rotate-45' : ''}`}></div>
           </div>
         </div>
-        <ul className={`flex-col gap-5 items-center ${isOpen ? 'flex' : 'hidden'}`}>
+        <ul className={`flex-col gap-5 items-center mt-3 ${isOpen ? 'flex' : 'hidden'}`}>
           <li className={site == "products" ? "active" : ""}>
             <Link href="/products">
               Productos
@@ -81,8 +86,13 @@ const Nav = ({site}) => {
               Tutorial
             </Link>
           </li>
-          <li>
-            <a className='inline-block text-white px-4 py-2 rounded-md text-center font-bold bg-[#3c3c3c] shadowHoverWhite' href="https://t.me/+Lnp-Bi7rJzw1MGZk" target='blank'>Telegram</a>
+          <li >
+            <Link href="/#faq">
+              FAQ
+            </Link>
+          </li>
+          <li className='font-bold'>
+            <a  href="https://t.me/+Lnp-Bi7rJzw1MGZk" target='blank'>Telegram</a>
           </li>
         </ul>
       </nav>

@@ -29,27 +29,27 @@ export default function Providers() {
           <div className='provider shadowHover relative'>
             <Image src="/providers/cowboy.jpg" alt="cowboy shop" width={348} height={348} />	
             <span className='p-2 text-lg bold'>Cowboy Shop</span>
-            <a className='boton mb-5' href='https://cnfans.com/es/shops/?shop_type=weidian&shop_id=1650315740&num=1' target='blank' >Ir a tienda</a>
+            <a className='boton mb-5' href='https://cnfans.com/es/shops/?shop_type=weidian&shop_id=1650315740&num=1' target='blank' >Ver tienda</a>
           </div>
           <div className='provider shadowHover relative'>
             <Image src="/providers/cowboy.jpg" alt="cowboy shop" width={348} height={348} />	
             <span className='p-2 text-lg bold'>Cowboy Shop</span>
-            <a className='boton mb-5' href='https://cnfans.com/es/shops/?shop_type=weidian&shop_id=1650315740&num=1' target='blank' >Ir a tienda</a>
+            <a className='boton mb-5' href='https://cnfans.com/es/shops/?shop_type=weidian&shop_id=1650315740&num=1' target='blank' >Ver tienda</a>
           </div>
           <div className='provider shadowHover relative'>
             <Image src="/providers/cowboy.jpg" alt="cowboy shop" width={348} height={348} />	
             <span className='p-2 text-lg bold'>Cowboy Shop</span>
-            <a className='boton mb-5' href='https://cnfans.com/es/shops/?shop_type=weidian&shop_id=1650315740&num=1' target='blank' >Ir a tienda</a>
+            <a className='boton mb-5' href='https://cnfans.com/es/shops/?shop_type=weidian&shop_id=1650315740&num=1' target='blank' >Ver tienda</a>
           </div>
           <div className='provider shadowHover relative'>
             <Image src="/providers/cowboy.jpg" alt="cowboy shop" width={348} height={348} />	
             <span className='p-2 text-lg bold'>Cowboy Shop</span>
-            <a className='boton mb-5' href='https://cnfans.com/es/shops/?shop_type=weidian&shop_id=1650315740&num=1' target='blank' >Ir a tienda</a>
+            <a className='boton mb-5' href='https://cnfans.com/es/shops/?shop_type=weidian&shop_id=1650315740&num=1' target='blank' >Ver tienda</a>
           </div>
           <div className='provider shadowHover relative'>
             <Image src="/providers/cowboy.jpg" alt="cowboy shop" width={348} height={348} />	
             <span className='p-2 text-lg bold'>Cowboy Shop</span>
-            <a className='boton mb-5' href='https://cnfans.com/es/shops/?shop_type=weidian&shop_id=1650315740&num=1' target='blank' >Ir a tienda</a>
+            <a className='boton mb-5' href='https://cnfans.com/es/shops/?shop_type=weidian&shop_id=1650315740&num=1' target='blank' >Ver tienda</a>
           </div>
           
           
