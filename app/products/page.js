@@ -9,22 +9,26 @@ export default function Products({ searchParams }) {
   const [products, setProducts] = useState(null);
   const [categories, setCategories] = useState(null);
   const [categoryId, setCategoryId] = useState(null);
+  const [searchTerm, setSearchTerm] = useState('');
   const ref = '507768';
+
   const fetchProducts = async (cat_id = null) => {
     const res = cat_id ? await fetch(`/api/products?category_id=${cat_id}`) : await fetch(`/api/products`);
     const data = await res.json();
     setProducts(data);
   };
+
   const fetchProductsSearch = async (title, cat_id = null) => {
     const res = cat_id ? await fetch(`/api/products-search?category_id=${cat_id}&title=${title}`) : await fetch(`/api/products-search?title=${title}`);
     const data = await res.json();
     setProducts(data);
   };
+
   const fetchCategories = async () => {
     const res = await fetch('/api/categories');
     const data = await res.json();
     setCategories(data);
-    let selectedCategory = data.find(cat => cat.category === categoria)
+    let selectedCategory = data.find(cat => cat.category === categoria);
     setCategoryId(selectedCategory ? selectedCategory.id : null);
     if (selectedCategory) {
       fetchProducts(selectedCategory.id);
@@ -43,23 +47,32 @@ export default function Products({ searchParams }) {
     }
   }, [categoryId]);
 
+  useEffect(() => {
+    const delayDebounceFn = setTimeout(() => {
+      if (searchTerm) {
+        fetchProductsSearch(searchTerm, categoryId);
+      } else {
+        fetchProducts(categoryId ? categoryId : null);
+      }
+    }, 300);
+
+    return () => clearTimeout(delayDebounceFn);
+  }, [searchTerm, categoryId]);
+
   const handleFilterCategory = (id, category) => async (e) => {
-    setProducts(null)
+    setProducts(null);
     setCategoryId(id);
     const buttons = document.querySelectorAll('.category');
     buttons.forEach(button => button.classList.remove('active'));
     e.target.classList.add('active');
-    changeUrl(category)
+    changeUrl(category);
     fetchProducts(id);
-  }
+  };
 
-  const handleSearch = async (e) => {
-    e.preventDefault();
-    const title = e.target.value;
-    if (title) fetchProductsSearch(title, categoryId);
-    else fetchProducts(categoryId ? categoryId : null);
-    
-  }
+  const handleSearch = (e) => {
+    setProducts(null);
+    setSearchTerm(e.target.value);
+  };
 
   const changeUrl = (category) => {
     if (category === 'Todos') {
@@ -67,8 +80,7 @@ export default function Products({ searchParams }) {
     } else {
       window.history.pushState({}, '', `/products?categoria=${category}`);
     }
-
-  }
+  };
 
   return (
     <div className=''>
@@ -83,7 +95,7 @@ export default function Products({ searchParams }) {
         />
       </div>
       
-      <div className='mt-10 flex gap-5 mx-auto md:justify-center justify-start overflow-x-auto '>
+      <div className='mt-10 flex gap-5 mx-auto md:justify-center justify-start overflow-x-auto pb-2'>
         <button id="category-0" className={`rounded-[100px] border p-3 category ${categoryId ? '' : 'active'}`} onClick={handleFilterCategory(null, "Todos")}>Todos</button>
         {
           categories && categories.map(({ id, category }) => (

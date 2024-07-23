@@ -63,9 +63,9 @@ export default function Home() {
       </div>
       {/* YOUTUBE */}
       <h2 className='mt-20 text-center'>Videos</h2>
-      <div className='flex flex-col justify-center md:flex-row gap-10 mt-20'>
-        <iframe className='rounded-lg' width="600" height="337" src="https://www.youtube.com/embed/98Nlx0vvoAE" frameborder="0" allow="presentation; fullscreen; accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"></iframe>
-        <iframe className='rounded-lg' width="600" height="337" src="https://www.youtube.com/embed/KWqk03e486M" frameborder="0" allow="presentation; fullscreen; accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"></iframe>
+      <div id="youtube" className='flex flex-col justify-center items-center md:flex-row gap-10 mt-20 p-5'>
+        <iframe className='rounded-lg' width="600" height="337" src="https://www.youtube.com/embed/98Nlx0vvoAE" allow="presentation; fullscreen; accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"></iframe>
+        <iframe className='rounded-lg' width="600" height="337" src="https://www.youtube.com/embed/KWqk03e486M" allow="presentation; fullscreen; accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"></iframe>
       </div>
 
 
@@ -74,7 +74,7 @@ export default function Home() {
         <h2 className='mt-20'>FAQ</h2>
 
         <FAQItem
-          question='¿Qué es CNFANS?'
+          question='¿Es seguro CNFANS?'
           answer='CNFans es una plataforma que te permite comprar productos de China de forma segura y sencilla.'
           points={[
             'Tus datos personales y de pago están protegidos con las últimas tecnologías de encriptación.',
@@ -96,7 +96,14 @@ export default function Home() {
           ]}
         />
         <FAQItem
-          question='¿Cómo se realiza la declaración de mi paquete?'
+          question=' ¿Cómo se realiza la declaración de mi paquete?'
+          answer='En CNFANS, no tienes que preocuparte por nada relacionado con la declaración de tu
+paquete. Todo el proceso se maneja de manera automática, garantizando eficiencia y
+comodidad para ti. Ahorrándote tiempo y esfuerzo, la propia página se encarga de gestionar
+todo.'
+        />
+        <FAQItem
+          question='¿Cuánto tardan en llegar los productos al almacén?'
           answer='El tiempo estimado es de entre 5-10 días , aunque hay algunos que pueden tardar más y otros menos. Todo depende del tiempo que tarda el proveedor, hay proveedores que tardan poco en
 enviarlo y otros que tardan más. Tened en cuenta que China es muy grande, y dependiendo de donde se encuentre el proveedor en cuanto a cercanía de los almacenes tardará más o menos tiempo.'
         />
