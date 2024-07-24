@@ -70,6 +70,7 @@ export default function EditProducts() {
       title: form.querySelector('input[name="title"]').value,
       link: form.querySelector('input[name="link"]').value,
       price: form.querySelector('input[name="price"]').value,
+      order: form.querySelector('input[name="order"]').value,
       num_products: form.querySelector('input[name="num_products"]').value,
       category_id: form.querySelector('select[name="category_id"]').value,
     }
@@ -108,6 +109,13 @@ export default function EditProducts() {
       <div className="w-6/6">
         {products ? products.map((product) => (
           <form key={product.id} id={`product${product.id}`} className='flex gap-2 mt-3 justify-between items-center' onSubmit={handleChangeForm(product.id)}>
+            <input
+              className='p-2 rounded-md max-w-[100px]'
+              type="number"
+              name="order"
+              value={product.order}
+              onChange={(e) => setProducts(products.map(p => p.id === product.id ? { ...p, order: e.target.value } : p))}
+            />
             <Image className='max-h-[220px]'
               src={product.photo ? `data:image/jpeg;base64,${Buffer.from(product.photo).toString('base64')}` : '/logo_blanco.png'}
               alt={product.title}
@@ -129,7 +137,7 @@ export default function EditProducts() {
               onChange={(e) => setProducts(products.map(p => p.id === product.id ? { ...p, link: e.target.value } : p))}
             />
             <input
-              className='p-2 rounded-md'
+              className='p-2 rounded-md max-w-[150px]'
               type="number"
               step={0.01}
               name="price"
@@ -154,7 +162,7 @@ export default function EditProducts() {
               ))}
             </select>
             <input
-              className='p-2 rounded-md'
+              className='p-2 rounded-md max-w-[100px]'
               type="number"
               name="num_products"
               min={0}

@@ -3,13 +3,13 @@ import db from '../../lib/db';
 
 export default async function handler(req, res) {
   if (req.method === 'POST') {
-    const {id, link, title, price, num_products, category_id } = req.body;
+    const {id, link, title, price, order, num_products, category_id } = req.body;
     // const photoBuffer = photo ? Buffer.from(photo, 'base64') : null;
     try {
       const result = await db.query(
         //update
-        'UPDATE rh_products SET link = ?, title = ?, price = ?, num_products = ?, category_id = ? WHERE id = ?',
-        [link, title, price, num_products, category_id, id]
+        'UPDATE rh_products SET link = ?, title = ?, price = ?, `order` = ?, num_products = ?, category_id = ? WHERE id = ?',
+        [link, title, price, order, num_products, category_id, id]
       );
       res.status(200).json({ message: 'Se ha actualizado el producto' });
     } catch (error) {

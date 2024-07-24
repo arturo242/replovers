@@ -8,6 +8,7 @@ function ProductForm() {
   const [link, setLink] = useState('');
   const [title, setTitle] = useState('');
   const [price, setPrice] = useState('');
+  const [order, setOrder] = useState('');
   const [photo, setPhoto] = useState(null);
   const [num_products, setNumProducts] = useState(null);
   const [categoryId, setCategoryId] = useState('');
@@ -51,6 +52,7 @@ function ProductForm() {
       link: link,
       title: title,
       price: price,
+      order: order,
       photo: base64Photo ? base64Photo.split(',')[1] : null,
       num_products: num_products,
       categoryId: categoryId,
@@ -71,6 +73,7 @@ function ProductForm() {
         setLink('');
         setTitle('');
         setPrice('');
+        setOrder('');
         setPhoto(null);
         setCategoryId('');
         setNumProducts(null);
@@ -88,7 +91,7 @@ function ProductForm() {
   return (
     <div>
       <Nav />
-      <form onSubmit={handleSubmit} className='w-96 flex flex-col gap-5 mx-auto'>
+      <form onSubmit={handleSubmit} className='w-96 flex flex-col gap-5 mx-auto items-center'>
         <h1>Añadir producto</h1>
         <div>
           <label className='flex flex-col'>Link
@@ -108,7 +111,7 @@ function ProductForm() {
               type="text"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-
+              required
             />
           </label>
         </div>
@@ -135,7 +138,7 @@ function ProductForm() {
             </select>
           </label>
         </div>
-        <div>
+        <div className='flex gap-3'>
           <label className='flex flex-col'>Número de productos
             <input
               className='p-2 rounded-md'
@@ -146,6 +149,14 @@ function ProductForm() {
 
             />
           </label>
+          <label className='flex flex-col'>Orden
+            <input
+              className='p-2 rounded-md'
+              type="number"
+              value={order}
+              onChange={(e) => setOrder(e.target.value)}
+            />
+          </label>
         </div>
         <div>
           <label className='flex flex-col'>Foto principal
@@ -153,7 +164,6 @@ function ProductForm() {
               className='p-2 rounded-md text-white'
               type="file"
               onChange={handlePhotoChange}
-
             />
           </label>
         </div>

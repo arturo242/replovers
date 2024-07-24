@@ -21,6 +21,7 @@ const Footer = () => {
                 </a>
             </div>
             <p>Esta página contribuye a que los compradores no sean estafados a través de unos terceros.</p><p> <span className='text-secondary'>replovers.com</span> no apoya la venta de réplicas ni productos falsificados.</p>
+            <p className='text-secondary'><a href='mailto:reploverscontact@gmail.com'>reploverscontact@gmail.com</a></p>
         </footer>
     );
 };
