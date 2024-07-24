@@ -5,16 +5,16 @@ import Image from 'next/image';
 import FAQItem from './faqItem';
 
 export default function Home() {
-  const [products, setProducts] = useState([]);
-  // change products to providers
+  const [providers, setProviders] = useState(null);
+
   useEffect(() => {
-    async function fetchProducts() {
-      const response = await fetch('/api/products');
+    async function fetchProviders() {
+      const response = await fetch('/api/providers?featured=1');
       const data = await response.json();
-      setProducts(data);
+      setProviders(data);
     }
 
-    fetchProducts();
+    fetchProviders();
   }, []);
 
 
@@ -37,29 +37,20 @@ export default function Home() {
           <a target='blank' href="https://t.me/+Lnp-Bi7rJzw1MGZk" className='botonSecundario shadowHoverWhite text-xl bold'>Únete al telegram</a>
         </div>
 
-        <h2 className='mt-20'>MEJORES PROVEEDORES</h2>
-        <div className='mt-10 flex flex-col md:flex-row gap-5'>
-          <div className='provider shadowHover'>
-            <Image src="/providers/cowboy.jpg" alt="cowboy shop" width={348} height={348} />
-            <span className='p-2 text-lg bold'>Cowboy Shop</span>
-            <a href='https://cnfans.com/es/shops/?shop_type=weidian&shop_id=1650315740&num=1' target='blank' className='boton mb-5'>Ver tienda</a>
-          </div>
-          <div href='https://cnfans.com/es/shops/?shop_type=weidian&shop_id=1650315740&num=1' target='blank' className='provider shadowHover'>
-            <Image src="/providers/cowboy.jpg" alt="cowboy shop" width={348} height={348} />
-            <span className='p-2 text-lg bold'>Cowboy Shop</span>
-            <a href='https://cnfans.com/es/shops/?shop_type=weidian&shop_id=1650315740&num=1' target='blank' className='boton mb-5'>Ver tienda</a>
-          </div>
-          <div href='https://cnfans.com/es/shops/?shop_type=weidian&shop_id=1650315740&num=1' target='blank' className='provider shadowHover'>
-            <Image src="/providers/cowboy.jpg" alt="cowboy shop" width={348} height={348} />
-            <span className='p-2 text-lg bold'>Cowboy Shop</span>
-            <a href='https://cnfans.com/es/shops/?shop_type=weidian&shop_id=1650315740&num=1' target='blank' className='boton mb-5'>Ver tienda</a>
-          </div>
-          <div href='https://cnfans.com/es/shops/?shop_type=weidian&shop_id=1650315740&num=1' target='blank' className='provider shadowHover'>
-            <Image src="/providers/cowboy.jpg" alt="cowboy shop" width={348} height={348} />
-            <span className='p-2 text-lg bold'>Cowboy Shop</span>
-            <a href='https://cnfans.com/es/shops/?shop_type=weidian&shop_id=1650315740&num=1' target='blank' className='boton mb-5'>Ver tienda</a>
-          </div>
-        </div>
+        <h2 className='mt-20'>{providers ? 'MEJORES PROVEEDORES' : ''}</h2>
+        <div className='providers'>
+        {
+          providers && providers.map((provider) => (
+            <div key={provider.id} className='provider shadowHover relative'>
+              <Image src={provider.photo ? `data:image/jpeg;base64,${Buffer.from(provider.photo).toString('base64')}` : '/logo_blanco.png'} alt={provider.name} width={348} height={348} />
+              <span className='p-2 text-lg bold'>{provider.name}</span>
+              <a className='boton mb-5' href={provider.link} target='blank' >Ver tienda</a>
+            </div>
+          ))
+        }
+
+
+      </div>
       </div>
       {/* YOUTUBE */}
       <h2 className='mt-20 text-center'>Videos</h2>
