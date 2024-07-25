@@ -69,6 +69,10 @@ input{
   color: var(--background);
 }
 
+input.search:focus, input.search:active{
+  box-shadow:0 0 12px white; 
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
@@ -104,6 +108,12 @@ input{
 }
 .shadowHoverWhite:hover{
   box-shadow: 0 0 15px white;
+}
+.textShadowHover:hover{
+  text-shadow: 0 0 15px var(--secondary);
+}
+.textShadowHoverWhite:hover{
+  text-shadow: 0 0 15px white;
 }
 
 .nav{

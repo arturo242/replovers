@@ -1,76 +1,70 @@
-'use client';
-
+'use client'
 import { useEffect, useState } from 'react';
 import Nav from '../nav';
 import Image from 'next/image';
+import { fetchProductsSearch } from '@/utils/fetchProductsSearch';
+import { fetchProducts } from '@/utils/fetchProducts';
 
 export default function Products({ searchParams }) {
   const { categoria } = searchParams;
-  const [products, setProducts] = useState(null);
+  const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState(null);
   const [categoryId, setCategoryId] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
-  const ref = '507768';
+  const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
 
-  const fetchProducts = async (cat_id = null) => {
-    const res = cat_id ? await fetch(`/api/products?category_id=${cat_id}`) : await fetch(`/api/products`);
-    const data = await res.json();
-    setProducts(data);
-  };
-
-  const fetchProductsSearch = async (title, cat_id = null) => {
-    const res = cat_id ? await fetch(`/api/products-search?category_id=${cat_id}&title=${title}`) : await fetch(`/api/products-search?title=${title}`);
-    const data = await res.json();
-    setProducts(data);
-  };
-
-  const fetchCategories = async () => {
-    const res = await fetch('/api/categories');
-    const data = await res.json();
-    setCategories(data);
-    let selectedCategory = data.find(cat => cat.category === categoria);
-    setCategoryId(selectedCategory ? selectedCategory.id : null);
-    if (selectedCategory) {
-      fetchProducts(selectedCategory.id);
-    } else {
-      fetchProducts();
-    }
+  const loadProducts = async () => {
+    const data = searchTerm
+      ? await fetchProductsSearch({ title: searchTerm, category_id: categoryId, page })
+      : await fetchProducts({ category_id: categoryId, page });
+    setProducts(data.data);
+    setTotalPages(data.totalPages);
   };
 
   useEffect(() => {
+    const fetchCategories = async () => {
+      const res = await fetch('/api/categories');
+      const data = await res.json();
+      setCategories(data);
+      let selectedCategory = data.find(cat => cat.category === categoria);
+      setCategoryId(selectedCategory ? selectedCategory.id : null);
+    };
+
     fetchCategories();
   }, []);
 
   useEffect(() => {
     if (categoryId !== null) {
-      fetchProducts(categoryId);
+      setPage(1); // Reset page number when category changes
     }
   }, [categoryId]);
 
   useEffect(() => {
+    loadProducts();
+  }, [page, categoryId]);
+
+  useEffect(() => {
     const delayDebounceFn = setTimeout(() => {
-      if (searchTerm) {
-        fetchProductsSearch(searchTerm, categoryId);
-      } else {
-        fetchProducts(categoryId ? categoryId : null);
-      }
+      setPage(1); // Reset page to 1 when search term changes
+      loadProducts();
     }, 300);
 
     return () => clearTimeout(delayDebounceFn);
   }, [searchTerm, categoryId]);
 
   const handleFilterCategory = (id, category) => async (e) => {
-    setProducts(null);
+    setProducts([]);
     setCategoryId(id);
+    setPage(1);
     const buttons = document.querySelectorAll('.category');
     buttons.forEach(button => button.classList.remove('active'));
     e.target.classList.add('active');
     changeUrl(category);
-    fetchProducts(id);
   };
 
   const handleSearch = (e) => {
-    setProducts(null);
+    setProducts([]);
     setSearchTerm(e.target.value);
   };
 
@@ -82,8 +76,16 @@ export default function Products({ searchParams }) {
     }
   };
 
+  const handleNextPage = () => {
+    if (page < totalPages) setPage(page + 1);
+  };
+
+  const handlePrevPage = () => {
+    if (page > 1) setPage(page - 1);
+  };
+
   return (
-    <div className=''>
+    <div>
       <Nav site="products" />
       <h1 className='title text-center'>Productos</h1>
       <div className='w-full flex justify-center mt-10'>
@@ -94,7 +96,7 @@ export default function Products({ searchParams }) {
           onChange={handleSearch}
         />
       </div>
-      
+
       <div className='mt-10 flex gap-5 mx-auto md:justify-center justify-start overflow-x-auto pb-2'>
         <button id="category-0" className={`rounded-[100px] border p-3 category ${categoryId ? '' : 'active'}`} onClick={handleFilterCategory(null, "Todos")}>Todos</button>
         {
@@ -103,15 +105,15 @@ export default function Products({ searchParams }) {
           ))
         }
       </div>
+
       <div className="productos">
-        {products ? products.map((product) => (
+        {products.length > 0 ? products.map((product) => (
           <div key={product.id} className='producto shadowHover relative'>
             {product.num_products != 0 && (
-            <span className='absolute top-3 right-3 bg-secondary rounded-[100px] p-2'>+
-              {
-                product.num_products
-              }
-            </span>)}
+              <span className='absolute top-3 right-3 bg-secondary rounded-[100px] p-2'>+
+                {product.num_products}
+              </span>
+            )}
             <div>
               <Image className='max-h-[220px]'
                 src={product.photo ? `data:image/jpeg;base64,${Buffer.from(product.photo).toString('base64')}` : '/logo_blanco.png'}
@@ -127,13 +129,18 @@ export default function Products({ searchParams }) {
           </div>
         )) : <div className='loadingProducts col-span-full'>
           <Image
-          src={'/logo_blanco_rojo.png'}
-          width={300}
-          height={300}
-          alt='logo cargando'
+            src={'/logo_blanco_rojo.png'}
+            width={300}
+            height={300}
+            alt='logo cargando'
           ></Image>
-        </div>
-        }
+        </div>}
+      </div>
+
+      <div className="pagination flex justify-center items-center gap-5">
+        <button onClick={handlePrevPage} disabled={page === 1} className='bold text-xl textShadowHover' >{"🢀"}</button>
+        <span> {page} / {totalPages}</span>
+        <button onClick={handleNextPage} disabled={page === totalPages} className='bold text-xl textShadowHover'>{"🢂"}</button>
       </div>
     </div>
   );
