@@ -137,10 +137,10 @@ export default function Products({ searchParams }) {
         </div>}
       </div>
 
-      <div className="pagination flex justify-center items-center gap-5">
-        <button onClick={handlePrevPage} disabled={page === 1} className='bold text-xl textShadowHover' >{"🢀"}</button>
+      <div className="pagination flex justify-center items-center gap-5 mt-3">
+        <button onClick={handlePrevPage} disabled={page === 1} className='bold text-xl textShadowHover border px-3 py-1 rounded-[100px]' >{"<"}</button>
         <span> {page} / {totalPages}</span>
-        <button onClick={handleNextPage} disabled={page === totalPages} className='bold text-xl textShadowHover'>{"🢂"}</button>
+        <button onClick={handleNextPage} disabled={page === totalPages} className='bold text-xl textShadowHover border px-3 py-1 rounded-[100px]'>{">"}</button>
       </div>
     </div>
   );
