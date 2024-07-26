@@ -171,6 +171,10 @@ input.search:focus, input.search:active{
   animation: heartbeat 1s infinite;
 }
 
+.logo[href]:hover > img, img.logo:active{
+  animation: heartbeat 1s infinite;
+}
+
 @keyframes heartbeat {
   0%, 100% {
       transform: scale(1);

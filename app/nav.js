@@ -14,7 +14,7 @@ const Nav = ({site}) => {
   return (
     <>
       <nav className="md:flex hidden justify-between items-center nav pr-20">
-        <Link href="/">
+        <Link href="/" className='logo'>
           <Image src='/logo_blanco.png'
               alt='logo'
               width={130}
@@ -52,7 +52,7 @@ const Nav = ({site}) => {
         </ul>
       </nav>
       <nav className="flex md:hidden flex-col justify-between items-center nav">
-        <Link href="/">
+        <Link href="/" className='logo'>
           <Image src='/logo_blanco.png'
               alt='logo'
               width={130}

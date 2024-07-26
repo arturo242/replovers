@@ -24,7 +24,7 @@ export default function Home() {
       <Nav />
       <div className='mt-20 flex flex-col justify-center items-center'>
         <Image
-          className=''
+          className='logo'
           src="/logo_blanco_rojo.png"
           alt="Logo RepLovers"
           width={600}
