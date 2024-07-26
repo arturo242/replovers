@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import Nav from '../nav';
 import Image from 'next/image';
+import CopyLink from '../copyLink';
 
 export default function LinkShortener() {
     const [longUrl, setLongUrl] = useState('');
@@ -228,6 +229,7 @@ export default function LinkShortener() {
                     <div className='flex items-center gap-3 border p-3 rounded-md border-secondary mt-10'>
                         <Image className='bg-white rounded-md' src={rawUrl.image} alt='rawUrl' width={60} height={60} />
                         <a className='secondaryHover' target='blank' href={rawUrl.link}>{rawUrl.link}</a>
+                        <CopyLink link={rawUrl.link} />
                     </div>
                 </div>
             )}
@@ -239,6 +241,7 @@ export default function LinkShortener() {
                         <div className="flex items-center gap-3 border p-3 rounded-md border-secondary mt-5" key={index}>
                             <Image className='bg-white rounded-md' src={agent.image} alt='rawUrl' width={60} height={60} />
                             <a target='blank' className='secondaryHover' href={agent.link}>{agent.link}</a>
+                            <CopyLink link={agent.link} />
                         </div>
                     ))}
                 </div>
