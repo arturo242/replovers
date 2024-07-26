@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import Nav from './nav';
 import Image from 'next/image';
 import FAQItem from './faqItem';
+import HeartCanvas from './heart3d';
 
 export default function Home() {
   const [providers, setProviders] = useState(null);
@@ -30,15 +31,15 @@ export default function Home() {
           height={600}
         />
         <div className='flex flex-col md:flex-row gap-5'>
-          <a href="/products?categoria=Destacados" className='boton shadowHover text-xl bold'>Productos destacados</a>
           <a target='blank' href="https://docs.google.com/spreadsheets/d/1d8d3BLMxaUomRufs6aWnssNY5RWEXPl5kbUO-8Be-5Y/edit?usp=sharing" className='boton shadowHover text-xl bold'>
             Spreadsheet (+3000)
           </a>
+          <a href="https://www.reddit.com/r/replovers/" target='blank' className='botonSecundario shadowHoverWhite text-xl bold'>Únete al reddit</a>
           <a target='blank' href="https://t.me/+Lnp-Bi7rJzw1MGZk" className='botonSecundario shadowHoverWhite text-xl bold'>Únete al telegram</a>
         </div>
 
         <h2 className='mt-20'>{providers ? 'MEJORES PROVEEDORES' : ''}</h2>
-        <div className='providers'>
+        <div className='featuredProviders'>
         {
           providers && providers.map((provider) => (
             <div key={provider.id} className='provider shadowHover relative'>
