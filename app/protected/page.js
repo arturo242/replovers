@@ -44,7 +44,7 @@ export default function ProtectedPage() {
   return (
     <div>
       <h1>Protected Page</h1>
-      <p>Welcome, user {user.userId}!</p>
+      <p>Welcome, user {user.id}!</p>
     </div>
   );
 }

@@ -16,6 +16,14 @@ function ProductForm() {
   const [messageClass, setMessageClass] = useState('')
   const [message, setMessage] = useState('');
 
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      router.push('/login');
+    }
+    fetchCategories();
+  }, []);
+
   const handlePhotoChange = (e) => {
     setPhoto(e.target.files[0]);
   };
@@ -40,10 +48,6 @@ function ProductForm() {
       console.error('Error fetching categories:', error);
     }
   };
-
-  useEffect(() => {
-    fetchCategories();
-  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

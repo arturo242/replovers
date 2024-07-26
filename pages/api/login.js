@@ -9,13 +9,12 @@ export default async function handler(req, res) {
 
     try {
       const [rows] = await db.query('SELECT * FROM rh_users WHERE name = ?',[name]);
-
       if (rows.length === 0) {
         return res.status(401).json({ message: 'Invalid name or password' });
       }
 
       const user = rows[0];
-
+      
       const passwordMatch = await bcrypt.compare(password, user.password);
 
       if (!passwordMatch) {
