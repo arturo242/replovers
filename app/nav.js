@@ -1,11 +1,9 @@
 'use client';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
 const Nav = ({site}) => {
-  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {

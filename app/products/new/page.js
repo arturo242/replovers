@@ -3,8 +3,10 @@
 import { useEffect, useState } from 'react';
 import Nav from '@/app/nav';
 import EditProducts from '../editProducts';
+import { useRouter } from 'next/navigation';
 
 function ProductForm() {
+  const router = useRouter();
   const [link, setLink] = useState('');
   const [title, setTitle] = useState('');
   const [price, setPrice] = useState('');
@@ -22,7 +24,7 @@ function ProductForm() {
       router.push('/login');
     }
     fetchCategories();
-  }, []);
+  }, [router]);
 
   const handlePhotoChange = (e) => {
     setPhoto(e.target.files[0]);
@@ -79,6 +81,7 @@ function ProductForm() {
         setPrice('');
         setOrder('');
         setPhoto(null);
+        console.log(categoryId)
         setCategoryId('');
         setNumProducts(null);
         setMessageClass('text-green-500');
@@ -90,6 +93,7 @@ function ProductForm() {
       setMessage('Ha ocurrido un error');
       setMessageClass('text-red-500');
     }
+
   };
 
   return (
@@ -135,7 +139,7 @@ function ProductForm() {
           <label className='flex flex-col'>Categoría
             <select className='p-2 rounded-md text-black'
             onChange={(e) => setCategoryId(e.target.value)} >
-              <option>Selecciona</option>
+              <option value="">Selecciona</option>
               {categories && categories.map(({id, category}) => (
                 <option key={id} value={id}>{category}</option>
               ))}

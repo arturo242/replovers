@@ -44,7 +44,7 @@ export default function Home() {
           providers && providers.map((provider) => (
             <div key={provider.id} className='provider shadowHover relative'>
               <Image src={provider.photo ? `data:image/jpeg;base64,${Buffer.from(provider.photo).toString('base64')}` : '/logo_blanco.png'} alt={provider.name} width={348} height={348} />
-              <span className='p-2 text-lg bold'>{provider.name}</span>
+              {/* <span className='p-2 text-lg bold'>{provider.name}</span> */}
               <a className='boton mb-5' href={provider.link} target='blank' >Ver tienda</a>
             </div>
           ))

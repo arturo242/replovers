@@ -44,6 +44,7 @@ export default function LinkShortener() {
             return;
         }
 
+
         switch (domain) {
             case "cnfans.com":
             case "www.cnfans.com":
@@ -63,13 +64,24 @@ export default function LinkShortener() {
                 setShopType("taobao");
                 setId(taobaoData.id);
                 break;
+            case "detail.tmall.com":
+            case "www.detail.tmall.com":
+                const tmallData = getJsonFromUrl(urlToProcess);
+                setShopType("tmall");
+                setId(tmallData.id);
+                break;
             case "hoobuy.com":
             case "www.hoobuy.com":
-                const tempUrl = longUrl.substring(longUrl.indexOf("product/") + "product/".length).split("/");
+                const tempUrl = urlToProcess.substring(urlToProcess.indexOf("product/") + "product/".length).split("/");
                 const shopType = tempUrl[0];
                 const itemId = tempUrl[1];
                 setShopType(shopType);
                 setId(itemId);
+                break;
+            case "detail.1688.com":
+            case "www.detail.1688.com":
+                setShopType("1688");
+                setId(urlToProcess.substring(urlToProcess.indexOf("offer/") + "offer/".length).split("/")[0].split(".")[0]);
                 break;
             default:
                 break;
@@ -143,7 +155,6 @@ export default function LinkShortener() {
             case "ali_1688":
             case "1688":
             case "0":
-                newRawUrl = `https://detail.1688.com/offer/${id}.html`;
                 newRawUrl = {
                     image: "/agents/1688.png",
                     link: `https://detail.1688.com/offer/${id}.html`
@@ -171,6 +182,33 @@ export default function LinkShortener() {
                     },
                 ];
                 break;
+            case "tmall":
+                newRawUrl = {
+                    image: "/agents/tmall.png",
+                    link: `https://detail.tmall.com/item_o.htm?id=${id}`
+                };
+                newAgentUrls = [
+                    {
+                        image: "/agents/cnfans.png",
+                        link: `https://cnfans.com/product/?shop_type=taobao&id=${id}`,
+                    },
+                    {
+                        image: "/agents/hoobuy.png",
+                        link: `https://hoobuy.com/product/1/${id}`,
+                    },
+                    {
+                        image: "/agents/allchinabuy.png",
+                        link: `https://allchinabuy.com/en/page/buy?from=search-input&url=${encodeURIComponent(newRawUrl.link)}`,
+                    },
+                    {
+                        image: "/agents/cssbuy.png",
+                        link: `https://cssbuy.com/item-${id}.html`,
+                    },
+                    {
+                        image: "/agents/sugargoo.png",
+                        link: `https://sugargoo.com/#/home/productDetail?productLink=${encodeURIComponent(newRawUrl.link)}`,
+                    },
+                ];
             default:
                 break;
         }
