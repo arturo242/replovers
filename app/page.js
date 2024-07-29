@@ -56,7 +56,7 @@ export default function Home() {
       {/* YOUTUBE */}
       <h2 className='mt-20 text-center'>Videos</h2>
       <div id="youtube" className='flex flex-col justify-center items-center md:flex-row gap-10 mt-20 p-5'>
-        <iframe className='rounded-lg' width="600" height="337" src="https://www.youtube.com/embed/98Nlx0vvoAE" allow="presentation; fullscreen; accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"></iframe>
+        <iframe className='rounded-lg' width="600" height="337" src="https://www.youtube.com/embed/3lzjY2LbX_I?si=7sCFWj4QCDF_Ig5h" allow="presentation; fullscreen; accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"></iframe>
         <iframe className='rounded-lg' width="600" height="337" src="https://www.youtube.com/embed/KWqk03e486M" allow="presentation; fullscreen; accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"></iframe>
       </div>
 
