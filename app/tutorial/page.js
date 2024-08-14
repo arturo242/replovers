@@ -9,7 +9,7 @@ export default function Tutorial() {
             <div className='flex flex-col gap-5 items-center w-5/6 md:w-3/6 mx-auto'>
                 <h1 className='title text-center'>Tutorial</h1>
 
-                <div id="youtube" className='flex flex-col justify-center items-center md:flex-row gap-10 mt-20 p-5'>
+                <div id="youtube" className='flex flex-col justify-center items-center md:flex-row gap-10 mt-20 p-5 hidden'>
                     <div>
                         <iframe className='mb-3 rounded-lg' width="600" height="337" src="https://www.youtube.com/embed/8whqWrTpJfQ?si=ClUkqdiuEoyqWXd5" allow="presentation; fullscreen; accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"></iframe>
                         <h3 className='text-center'>Tutorial comprar productos</h3>
